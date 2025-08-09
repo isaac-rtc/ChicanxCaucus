@@ -1,0 +1,149 @@
+*{
+  font-family:Georgia, 'Times New Roman', Times, serif
+}
+
+body{
+  margin:0;
+}
+
+/* NAVBAR LAYOUT */
+.navbar-container {
+  position: absolute;   
+  top: 0; left: 0; right: 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* left / center / right */
+  align-items: center;
+  padding: 16px 24px;    /* space from top and sides */
+}
+
+.nav-left a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+.nav-center {
+  display: flex;
+  justify-content: center;
+}
+
+#heroIcon {
+  width: 100px;
+  height: auto;
+}
+
+.nav-right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+.nav-right a {
+  text-decoration: none;
+  color: white;
+  font-size: 21px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+#instaIcon {
+  width: 80px;
+  height: auto;
+  object-fit: contain;
+}
+
+
+
+/* BACKGROUND PHOTO*/
+
+.hero {
+  height: 100vh;
+  position: relative;
+  background: url(images/delosmuertos.png) center / cover no-repeat;
+}
+
+/* WELCOME TEXT AND ANIMATION */
+
+.welcome{
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.welcome h1 {
+  margin: 0;
+  font-size: 4rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,1);
+}
+
+.welcome { animation: appear 2s ease-out forwards; }
+
+@keyframes appear {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Fade out "Welcome to" after it appears */
+.intro {
+  display: inline-block;
+  animation: introFade 1.5s 2.5s ease-in-out forwards; 
+  /* 1.5s fade, starts 2.5s after the page loads */
+}
+
+@keyframes introFade {
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+  
+}
+
+.name {
+  display: inline-block;
+  animation: nameMove 1.5s 3.7s ease-in-out forwards;
+}
+
+@keyframes nameMove {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-280px); /* adjust how far up you want it */
+  }
+}
+
+
+/* BOUNCING ARROW*/
+
+.scroll-arrow {
+  position: absolute;
+  bottom: 20px;            /* distance from bottom of hero */
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  opacity: 0.8;
+  animation: arrowBounce 1.5s ease-in-out infinite;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-arrow:hover {
+  opacity: 1;
+}
+
+@keyframes arrowBounce {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -8px);
+  }
+}
+
+.about{
+  height: 100vh;
+}
