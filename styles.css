@@ -1,45 +1,70 @@
 *{
-  font-family:Georgia, 'Times New Roman', Times, serif
+  font-family: Georgia, 'Times New Roman', Times, serif
 }
 
-body{
-  margin:0;
+html, body{
+  height: 100%;
+  margin: 0;
 }
 
-/* NAVBAR LAYOUT */
+/* --- NAVBAR --- */
+/* Absolute so it stays at top, no margin spacing, grid display as so: left | center | right, all
+items aligned at center and there is padding to have space around */
 .navbar-container {
-  position: absolute;   
+  position: fixed;   
   top: 0; left: 0; right: 0;
   display: grid;
-  grid-template-columns: 1fr auto 1fr; /* left / center / right */
-  align-items: center;
-  padding: 16px 24px;    /* space from top and sides */
+  grid-template-columns: 1fr auto 1fr;
+  justify-content: center;      
+  align-items: center;           
+  padding: 16px 24px;
+  /*  Padding works as so: top and bottom | left and right */
+  z-index: 1000;
+  
 }
 
-.nav-left a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: white;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+.navbar-container.in-eboard {
+  background-color:  #90D5F5;
 }
+
+/* All nav-childs are display:flex to have them as row direction */
+.nav-left {
+  display: flex;
+  gap: 10px; /* applies gap between items */
+}
+/* Nav icon-left normalization & alignment */
+.nav-icon-link {
+  display: flex;               
+  align-items: center;
+}
+/* General icon styling */
+.icon {                
+  width: auto;
+  display: block;   
+  filter: none;           
+}
+/* Fine-tuned Icons */
+.insta-icon { height: 52px; }
+.news-icon { height: 28px; }
+
 
 .nav-center {
   display: flex;
-  justify-content: center;
 }
-
-#heroIcon {
+/* Fine-tuned center logo, with balanced margin spacing */
+.logo {
   width: 100px;
   height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .nav-right {
   display: flex;
-  justify-content: flex-end;
-  gap: 16px;
+  justify-content: flex-end; /* has items hug end of the flexbox so they appear to the right of screen */
+  gap: 16px; /* applies gap between items */
 }
+/* Link Styling */
 .nav-right a {
   text-decoration: none;
   color: white;
@@ -47,24 +72,90 @@ body{
   text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
-#instaIcon {
-  width: 80px;
-  height: auto;
-  object-fit: contain;
+.nav-dropdown{
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown{
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(0, 0, 0, 0.417);
+  min-width: fit-content;
+}
+
+.dropdown a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: white;
+}
+
+.dropdown a:hover {
+  background: #90d5f5;
+}
+
+.nav-dropdown:hover .dropdown {
+  display: block;
+}
+
+/* CHANGE COLOR FOR LIGHT-PAGES */
+body.light-mode .nav-right a {
+  color: black;
+  text-shadow: none;
+}
+body.light-mode .icon {
+  filter: brightness(0) invert(0);  
 }
 
 
+.light-mode .dropdown {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
 
-/* BACKGROUND PHOTO*/
+.light-mode .dropdown a {
+  color: black;
+}
 
+
+/*HERO DIMENSIONS & STYLING */
 .hero {
-  height: 100vh;
+  min-height: 100dvh;                        
   position: relative;
-  background: url(images/delosmuertos.png) center / cover no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;   
+
+}
+
+/* ARROW BUTTONS */
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  width: 56px;
+  height: 56px;
+  border: none;
+  background-color: transparent;
+  font-size: 46px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 5;
+  color: white;
+}
+
+.hero-arrow.left  { left: 16px; }
+.hero-arrow.right { right: 16px; }
+
+/* HOVER RING */
+.hero-arrow:focus-visible, .hero-arrow:hover {
+  background: rgba(0,0,0,0.35);
+  border-radius: 50%;
 }
 
 /* WELCOME TEXT AND ANIMATION */
-
 .welcome{
   color: white;
   top: 50%;
@@ -75,7 +166,7 @@ body{
 
 .welcome h1 {
   margin: 0;
-  font-size: 4rem;
+  font-size: 4.5rem;
   text-shadow: 0 2px 4px rgba(0,0,0,1);
 }
 
@@ -88,21 +179,16 @@ body{
 
 /* Fade out "Welcome to" after it appears */
 .intro {
-  display: inline-block;
-  animation: introFade 1.5s 2.5s ease-in-out forwards; 
+  animation: introFadeOut 1.5s 2.5s ease-in-out forwards; 
   /* 1.5s fade, starts 2.5s after the page loads */
 }
 
-@keyframes introFade {
-  0%{
-    opacity: 1;
-  }
-  100%{
-    opacity: 0;
-  }
-  
+@keyframes introFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
 
+/*MOVING CHICANX */
 .name {
   display: inline-block;
   animation: nameMove 1.5s 3.7s ease-in-out forwards;
@@ -113,37 +199,153 @@ body{
     transform: translateY(0);
   }
   to {
-    transform: translateY(-280px); /* adjust how far up you want it */
+    transform: translateY(-280px); 
   }
 }
 
 
-/* BOUNCING ARROW*/
-
-.scroll-arrow {
+/* 
+.meeting-time {
   position: absolute;
-  bottom: 20px;            /* distance from bottom of hero */
+  top: 25%;            
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) ;
   display: inline-block;
-  opacity: 0.8;
-  animation: arrowBounce 1.5s ease-in-out infinite;
-  transition: opacity 0.3s ease;
+  color: white;
+  font-size: 1rem;
+  opacity: 0;
+  animation: appear 2s ease forwards;
+  animation-delay: 5.5s;
+}
+*/
+/* THE HERO PAGE "STATS" */
+.hero-page {
+  height: 100dvh;                 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  position: relative;
 }
 
-.scroll-arrow:hover {
-  opacity: 1;
+/*STATS OF ABOUT-SECTION */
+.about-section {
+  display: flex;
+  flex-direction: row;                     
+  background: #f7fbff;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+  padding-top: calc(var(--nav-h) + .25rem);
 }
 
-@keyframes arrowBounce {
-  0%, 100% {
-    transform: translate(-50%, 0);
-  }
-  50% {
-    transform: translate(-50%, -8px);
-  }
+.about-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 200px; /* how tall you want the fade */
+  background: linear-gradient(to bottom, #f7fbff 0%, #90d5f5 90%);
+  z-index: -1;
 }
 
-.about{
-  height: 100vh;
+.about-section h1{
+  min-height: 150px;
+  border-radius: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-weight: lighter;
+  
 }
+
+.about-left{
+  display: flex;
+  flex-direction: column;
+  font-size: 35px;
+  margin-top: 15dvh;
+}
+
+.about-left h1{
+  background: radial-gradient(ellipse at center, #90d5f5 0%, #f7fbff 60%);
+}
+
+#foundation{
+  background: none;
+   font-size: 20px;
+   font-weight: bold;
+}
+.about-text{
+  display: flex;
+  flex-direction: column;
+  padding-left: 8rem;
+  margin-top: 1rem;
+}
+
+.about-text p{
+  max-width: 600px;
+  font-size: 17px;
+}
+
+
+/*WHAT ALLOWS SNAPPING EFFECT */
+.snap-container{
+  height: 100dvh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+
+.page {
+  height: 100dvh;        /* each panel fills at least one viewport */
+  scroll-snap-align: start; /* top of section aligns to snap point */
+  position: relative;
+  box-sizing: border-box;
+  padding-top: var(--nav-h);
+}
+
+#eboard{
+  background: #90D5F5;
+  height: auto;
+}
+
+.photo-wrap{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.photo-rows{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+#eboard img {
+  max-width: 320px;
+  max-height: 250px;
+  width: auto;
+  height: auto;
+  border: 4px solid #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+#eboard-title {
+  display: flex;                
+  justify-content: center;     
+  margin-bottom: 1.5rem;        
+}
+
+#eboard-title h1 {
+  font-size: 2.5rem;
+  font-weight: bold;                
+  text-align: center;           /* safe even without flex */
+}
+
+
+:root { --nav-h: 132px; }
+
+

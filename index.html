@@ -5,48 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Title is what the tab is named! -->
     <title>ChicanxCaucus</title>
+
     <!-- Here is the favicon that shows up with our logo!-->
-     <link rel="icon" href="images/CaucusFavicon.png" type="image/png">
+    <link rel="icon" href="images/CaucusFavicon.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
 </head>
 
-
 <body>
-    <!-- This holds the photo of the landing view in the css-->
-    <section class="hero">
-        
-        <!-- Navbar, go into navbar.html for changes -->
-        <div id="navbar-input"></div>
+    <!-- Navbar, go into navbar.html for changes -->
+    <div id="navbar"></div>
 
-         <!-- Animated welcome -->
-        <div class="welcome" id="welcome">
-            <h1>
-                <span class="intro" id="intro">Welcome to&nbsp;</span><br>
-                <span class="name">ChicanxCaucus</span>
+    <div class="snap-container">
+        <!-- This holds the photo of the landing view in the css-->
+        <section class="hero-page hero page ">
+            
+            
+
+            <!-- Animated welcome -->
+            <div class="welcome" id="welcome">
+
+                <h1>
+                    <span class="intro" id="intro">Welcome to</span><br>
+                    <span class="name">ChicanxCaucus</span>
+                    
+                </h1>
+            </div>
+            <!-- <div class="meeting-time">
+                <h1>Meetings Every Wednesday</h1>
+            </div>-->
+            <!-- Arrows -->
+            <button class="hero-arrow left" aria-label="Previous image">‹</button>
+            <button class="hero-arrow right" aria-label="Next image">›</button>
+        </section>
+
+        <section class="page light-page about-section" id="about">
+            <div class="about-left">
+                 <h1>Mission Statement:</h1>  
                 
-            </h1>
-        </div>
-        <a href="#arrow-content" class="scroll-arrow" aria-label="Scroll down">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
-            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-        </a>
+                 
+                 <!-- <h1 id="foundation">Chicanx Caucus was founded in 1971.</h1>  -->
+                 
+            </div>
+            
+           
 
-    </section>
+            <div class="about-text">
+                <p>Chicanx Caucus seeks to create an environment of support within the Columbia University Community for its membership.
+                Through said support, the Caucus aims to help members achieve their educational goals, increase their cultural consciousness
+                and political awareness and promote involvement in the Mexican, Mexican-American, Chicanx, and Latinx community.
+                </p>
 
+                <p>The goals of this organization in achieving this mission statement shall be:</p>
 
-    <main id="arrow-content">
-        <div class="about">
+                <p> - To inform Chicanxs about higher education opportunities by offering objective information and sharing our personal experiences.</p>
+               
+                <p> - To initiate and participate in activities that foster inter-group relations, interaction among the Chicanx Caucus, the Columbia Community, 
+                and the Chicanx, Mexican, Mexican-American, Latinx community of New York.
+                This includes but is not limited to: educational opportunities, cultural experiences, political involvement, and gender and sexuality issues.</p>
 
-        </div>
-        
-    </main>
+                <p> - To contribute through our active participation to the general well-being of Latinxs, and towards the proper resolution of the problems facing these analogous peoples.</p>
+            </div>
+            
 
-    <footer>
-        
-    </footer>
+        </section>
 
+        <section id="eboard" class="page light-page">
+            <div id="eboard-title">
+                <h1>Our Eboard:</h1>
+            </div>
+            <div class="photo-wrap">
+                <div class="photo-rows">
+                    <img src="eboard-pics/fernandaHerrera.JPG">
+                    <img src="eboard-pics/christT.jpeg">
+                    <img src="eboard-pics/IsaacGuzman.jpg">
+                </div>
+                <div class="photo-rows">
+                    <img src="eboard-pics/FranciscoDiaz.jpeg">
+                    <img src="eboard-pics/ViannyMondragon.jpg">
+                    <img src="eboard-pics/JoeramonTijerina.jpeg">
+                </div>
+                <div class="photo-rows">
+                    <img src="eboard-pics/Gabriela.jpeg">
+                    <img src="eboard-pics/SaraiZ.JPG">
+                    <img src="eboard-pics/Ilse Luna.jpeg">
+                </div>
+                <div class="photo-rows">
+                    <img src="eboard-pics/ Cionnie.jpeg">
+                    <img src="eboard-pics/Miriam.jpeg">
+                    <img src="eboard-pics/KarlaCamacho.jpeg">
+                </div>
+            </div>
+        </section>
+    </div>
     <!-- Linking an external JavaScript file -->
     <script src="script.js"></script>
     <!-- Load the navbar loader script -->
