@@ -48,9 +48,7 @@ items aligned at center and there is padding to have space around */
 .news-icon { height: 28px; }
 
 
-.nav-center {
-  display: flex;
-}
+
 /* Fine-tuned center logo, with balanced margin spacing */
 .logo {
   width: 100px;
@@ -158,7 +156,7 @@ body.light-mode .icon {
 /* WELCOME TEXT AND ANIMATION */
 .welcome{
   color: white;
-  top: 50%;
+  top: 52.5%;
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
@@ -231,9 +229,9 @@ body.light-mode .icon {
 /*STATS OF ABOUT-SECTION */
 .about-section {
   display: flex;
-  flex-direction: row;                     
+  flex-direction: column;                     
   background: #f7fbff;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   position: relative;
   z-index: 0;
@@ -349,3 +347,23 @@ body.light-mode .icon {
 :root { --nav-h: 132px; }
 
 
+.links-html{
+  text-align: center;
+  font-size: 32px;
+}
+
+
+.links-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  color: black;
+  background-color: #90D5F5;
+  outline: none;
+  border-radius: 5px;
+  font-size: 22px;
+
+  height: 60px;
+  width: 200px;
+  max-height: 60px;
+
+}
